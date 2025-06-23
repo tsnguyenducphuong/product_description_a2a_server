@@ -1,2 +1,58 @@
 # product_description_a2a_server
 A2A Server and Product Description Agents For Ecommerce Media Agency Project
+
+
+Following the same steps in this tutorial to deploy the A2A server to Google Cloud:
+https://codelabs.developers.google.com/intro-a2a-purchasing-concierge
+
+1.Go to Cloud Shell Editor and Setup Application Working Directory:
++ Click on the Open Editor button, this will open a Cloud Shell Editor, we can write our code here.
+
++ Next, let's clone the template working directory for this codelab from Github, run the following command:
+
+git clone https://github.com/tsnguyenducphuong/product_description_a2a_server.git
+
++ After that, go to the top section of the Cloud Shell Editor and click File->Open Folder, find your username directory and find the "product_description_a2a_server"
+
+2.Download uv and install python 3.12 with the following command:
+curl -LsSf https://astral.sh/uv/0.7.2/install.sh | sh && \
+source $HOME/.local/bin/env && \
+uv python install 3.12
+
+3.Now let's initialize the virtual environment of the product_description_a2a_server using uv , Run this command:
+uv sync --frozen
+
+4.Now, we need to prepare the .env variable first, let's copy the .env.example into .env file:
+cp ~/product_description_a2a_server/.env.example ~/product_description_a2a_server/.env
+
+Open Cloud Shell Editor (Toggle hidden files and update the .env with your API Key)
+
+3.Deploying Product Description - A2A Server to Cloud Run:
+Run the following command:
+
+gcloud services enable aiplatform.googleapis.com \
+                       run.googleapis.com \
+                       cloudbuild.googleapis.com \
+                       cloudresourcemanager.googleapis.com
+
+                       
+gcloud run deploy product-description-agent \
+           --source ~/product_description_a2a_server \
+           --port=8080 \
+           --allow-unauthenticated \
+           --min 1 \
+           --region us-central1
+
+When asked for enable APIs, select Y:
+The following APIs are not enabled on project [ecommerce-media-agency]:
+        artifactregistry.googleapis.com
+        cloudbuild.googleapis.com
+        run.googleapis.com
+
+You would see something like following:
+
+Operation "operations/acf.p2-863901711660-6f6837fd-390a-47a0-a3a3-b9a21c8d3fe1" finished successfully.
+Deploying from source requires an Artifact Registry Docker repository to store built containers. A repository named [cloud-run-source-deploy] in region [us-central1] will be
+ created.
+
+Do you want to continue (Y/n)?  Y
