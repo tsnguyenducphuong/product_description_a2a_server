@@ -35,7 +35,7 @@ gcloud services enable aiplatform.googleapis.com \
                        cloudbuild.googleapis.com \
                        cloudresourcemanager.googleapis.com
 
-                       
+
 gcloud run deploy product-description-agent \
            --source ~/product_description_a2a_server \
            --port=8080 \
@@ -56,3 +56,8 @@ Deploying from source requires an Artifact Registry Docker repository to store b
  created.
 
 Do you want to continue (Y/n)?  Y
+
+Once completed successfully, you would see something like:
+
+Service [product-description-agent] revision [product-description-agent-00001-tfv] has been deployed and is serving 100 percent of traffic.
+Service URL: https://product-description-agent-8639017XXXX.us-central1.run.app
