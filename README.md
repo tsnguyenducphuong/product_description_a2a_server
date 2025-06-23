@@ -17,7 +17,7 @@ git clone https://github.com/tsnguyenducphuong/product_description_a2a_server.gi
 2.Download uv and install python 3.12 with the following command:
 curl -LsSf https://astral.sh/uv/0.7.2/install.sh | sh && \
 source $HOME/.local/bin/env && \
-uv python install 3.12
+uv python install 3.13
 
 3.Now let's initialize the virtual environment of the product_description_a2a_server using uv , Run this command:
 uv sync --frozen
@@ -35,6 +35,8 @@ gcloud services enable aiplatform.googleapis.com \
                        cloudbuild.googleapis.com \
                        cloudresourcemanager.googleapis.com
 
+gcloud auth login
+gcloud config set project ecommerce-media-agency
 
 gcloud run deploy product-description-agent \
            --source ~/product_description_a2a_server \
@@ -42,6 +44,7 @@ gcloud run deploy product-description-agent \
            --allow-unauthenticated \
            --min 1 \
            --region us-central1
+           --timeout=600
 
 When asked for enable APIs, select Y:
 The following APIs are not enabled on project [ecommerce-media-agency]:
@@ -60,4 +63,9 @@ Do you want to continue (Y/n)?  Y
 Once completed successfully, you would see something like:
 
 Service [product-description-agent] revision [product-description-agent-00001-tfv] has been deployed and is serving 100 percent of traffic.
-Service URL: https://product-description-agent-8639017XXXX.us-central1.run.app
+Service URL: https://product-description-agent-86390171XXXX.us-central1.run.app
+
+If the container deployed successfully, remember to add the environment variables:
+
+Go and check the A2A server:
+https://product-description-agent-86390171XXXX.us-central1.run.app/.well-known/agent.json
