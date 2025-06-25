@@ -105,7 +105,7 @@ Do you want to continue (Y/n)?  Y
 Once completed successfully, you would see something like:
 
 Service [product-description-agent] revision [product-description-agent-00001-tfv] has been deployed and is serving 100 percent of traffic.
-Service URL: https://product-description-agent-86390171XXXX.us-central1.run.app
+Service URL: https://product-description-agent-86390171XXXX.us-central1.run.app/.well-known/agent.json
 
 If the container deployed successfully, remember to add the environment variables:
 
