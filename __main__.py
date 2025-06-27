@@ -20,8 +20,8 @@ from google.adk.sessions import InMemorySessionService
 
 load_dotenv()
 
-A2A_HOST=os.getenv("A2A_HOST","localhost")
-A2A_PORT=os.getenv("A2A_PORT",10002)
+A2A_HOST=os.getenv("A2A_HOST","0.0.0.0")
+A2A_PORT=os.getenv("A2A_PORT",8080)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

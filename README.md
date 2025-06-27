@@ -52,10 +52,10 @@ uv python install 3.13
 
 ```
 
-3.**Now let's initialize the virtual environment of the product_description_a2a_server using**
+3.**Now let's initialize the virtual environment of the product_description_a2a_server using uv , Run this command:**
 
 ```bash
-uv , Run this command:
+
 uv sync --frozen
 ```
 
